@@ -10,6 +10,7 @@
   },
   "rules": {
     "no-console": "warn",
-    "no-undef": "off"
+    "no-undef": "off",
+    "prefer-default-export": "off"
   }
 }

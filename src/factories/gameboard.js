@@ -35,7 +35,8 @@ const gameBoardFactory = () => {
   };
 
   const isDefeated = () => {
-    return ships.every((ship) => ship.isSunk());
+    const checkAllShips = ships.every((ship) => ship.isSunk());
+    return checkAllShips;
   };
   return { board, placeShip, receiveAttack, ships, isDefeated };
 };
