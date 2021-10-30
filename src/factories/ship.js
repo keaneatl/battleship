@@ -11,4 +11,4 @@ const shipFactory = (name, lngth, hitBox = []) => {
   return { name, lngth, hitBox, hit, isSunk };
 };
 
-module.exports = shipFactory;
+export { shipFactory };

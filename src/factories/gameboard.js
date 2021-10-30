@@ -1,39 +1,43 @@
+import { shipFactory } from "./ship";
+
 const gameBoardFactory = () => {
-  const board = {
-    "1A": { ship: "none" },
-    "1B": { ship: "none" },
-    "1C": { ship: "none" },
-    "1D": { ship: "none" },
-    "1E": { ship: "none" },
-    "1F": { ship: "none" },
+  const ships = [];
+  const board = [
+    { square: "1A" },
+    { square: "1B" },
+    { square: "1C" },
+    { square: "1D" },
+    { square: "1E" },
+    { square: "1F" },
+  ];
+
+  const placeShip = (type, length, hb = [], coor) => {
+    const createShip = shipFactory(type, length, hb);
+    for (let x = 0; x < length; x++) {
+      board[coor + x].ship = createShip;
+    }
+    ships.push(createShip);
   };
 
-  const placeShip = (type, length, x, y) => {
-    const newShip = shipFactory(type, length);
-    board[`${x}+${y}`].ship = newShip;
-  };
-
-  const receiveAttack = (x, y) => {
-    const coordinates = board[`${x}+${y}`];
-    if (coordinates.ship !== "none") {
-      const xyPairs = Object.keys(board);
-      coordinates.attacked = "miss";
-      coordinates.ship.hit(xyPairs.indexOf(coordinates));
-      // position will be determined by looping through each key value pair and  looking for all instances
-      // of tgat ship, and assigning the hitbox in that order
+  const receiveAttack = (coor) => {
+    const square = board[coor - 1];
+    if (square.ship !== undefined) {
+      for (let x = 0; x < square.ship.lngth; x++) {
+        square.ship.hit(coor);
+      }
+      ships.forEach((ship) => {
+        if (ship.name === square.ship.name) ship.hit(coor);
+      });
       return "Hit!";
     }
-
+    square.attacked = "Missed!";
     return "Missed!";
   };
 
   const isDefeated = () => {
-    const ships = Object.values(board);
-    ships.every((value) => {
-      value.ship.isSunk();
-    });
+    return ships.every((ship) => ship.isSunk());
   };
-  return { board, placeShip, receiveAttack, isDefeated };
+  return { board, placeShip, receiveAttack, ships, isDefeated };
 };
 
-module.exports = gameBoardFactory;
+export { gameBoardFactory };

@@ -1,27 +1,34 @@
-const gameBoardFactory = require("../factories/gameboard");
+import { gameBoardFactory } from "../factories/gameboard";
 
 describe("gameboard methods", () => {
-  let carrier;
-
+  let gbOne;
   beforeEach(() => {
-    carrier = gameBoardFactory().placeShip("carrier", "5", "A");
+    gbOne = gameBoardFactory();
+    gbOne.placeShip("carrier", 5, [1, 2, 3, 4, 5], 0);
   });
 
   test("can place ships", () => {
     // Where board is an array of all the div squares within gameboard
-    expect(gameBoardFactory().board[0].ship.name).toBe("carrier");
-    expect(gameBoardFactory().board[1].ship.name).toBe("carrier");
-    expect(gameBoardFactory().board[2].ship.name).toBe("carrier");
-    expect(gameBoardFactory().board[3].ship.name).toBe("carrier");
-    expect(gameBoardFactory().board[4].ship.name).toBe("carrier");
+    expect(gbOne.board[0].ship).toBe(gbOne.ships[0]);
+    expect(gbOne.board[1].ship).toBe(gbOne.ships[0]);
+    expect(gbOne.board[2].ship).toBe(gbOne.ships[0]);
+    expect(gbOne.board[3].ship).toBe(gbOne.ships[0]);
+    expect(gbOne.board[4].ship).toBe(gbOne.ships[0]);
   });
 
   test("receives attacks properly", () => {
-    expect(gameBoardFactory().receiveAtk("1", "F")).toBe("Missed!");
-    expect(gameBoardFactory().board[5].attacked).toBe("Miss");
+    expect(gbOne.receiveAttack(1)).toBe("Hit!");
+    expect(gbOne.receiveAttack(4)).toBe("Hit!");
+    expect(gbOne.receiveAttack(6)).toBe("Missed!");
+    expect(gbOne.board[5].attacked).toBe("Missed!");
   });
 
   test("can determine if all ships have sunk", () => {
-    expect(gameBoardFactory().isDefeated()).toBe(false);
+    gbOne.receiveAttack(1);
+    gbOne.receiveAttack(2);
+    gbOne.receiveAttack(3);
+    gbOne.receiveAttack(4);
+    gbOne.receiveAttack(5);
+    expect(gbOne.isDefeated()).toBe(true);
   });
 });

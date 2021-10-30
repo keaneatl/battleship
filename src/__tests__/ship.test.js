@@ -1,4 +1,4 @@
-const shipFactory = require("../factories/ship");
+import { shipFactory } from "../factories/ship";
 
 describe("ship methods", () => {
   let submarine;
