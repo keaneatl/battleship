@@ -9,6 +9,10 @@ const gameBoardFactory = () => {
     { square: "1D" },
     { square: "1E" },
     { square: "1F" },
+    { square: "1G" },
+    { square: "1H" },
+    { square: "1I" },
+    { square: "1J" },
   ];
 
   const placeShip = (type, length, hb = [], coor) => {

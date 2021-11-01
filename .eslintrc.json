@@ -11,6 +11,8 @@
   "rules": {
     "no-console": "warn",
     "no-undef": "off",
-    "prefer-default-export": "off"
+    "prefer-default-export": "off",
+    "no-unused-expressions": "off",
+    "no-param-reassign": "off"
   }
 }
