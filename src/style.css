@@ -1,0 +1,69 @@
+/* fonts */
+body {
+  background-color: #f4f1f8;
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  height: 100vh;
+}
+
+.footer {
+  margin-top: 5rem;
+  font-size: 1.5rem;
+}
+
+/* main styles */
+
+/* mobile styles */
+
+.header {
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.textbox {
+  display: none;
+}
+
+.gh-ico {
+  width: 2rem;
+}
+
+.boards-container {
+  height: 69vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.player-board,
+.computer-board {
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  margin: 1rem 0;
+  border: 1px solid black;
+  width: 300px;
+  height: 300px;
+}
+
+.tile {
+  border: 1px solid black;
+}
+
+.footer {
+  text-align: center;
+}
+
+/* small tablet styles */
+@media (min-width: 650px) {
+  body {
+    font-size: 20px;
+  }
+  .boards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
