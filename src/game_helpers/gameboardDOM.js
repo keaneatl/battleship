@@ -4,14 +4,7 @@ const newPlayerDOM = (() => {
   for (let i = 0; i < 100; i++) {
     const newSquare = document.createElement("div");
     newSquare.classList.add("tile");
-    newSquare.id = `p-square ${i}`;
-    newSquare.addEventListener("mouseenter", () => {
-      newSquare.setAttribute("style", "background-color: black;");
-    });
-    newSquare.addEventListener("mouseleave", () => {
-      newSquare.removeAttribute("style");
-    });
-
+    newSquare.classList.add("p-square");
     playerGameBoard.appendChild(newSquare);
   }
 })();
@@ -22,14 +15,7 @@ const newComputerDOM = (() => {
   for (let i = 0; i < 100; i++) {
     const newSquare = document.createElement("div");
     newSquare.classList.add("tile");
-    newSquare.id = `c-square ${i}`;
-    newSquare.addEventListener("mouseenter", () => {
-      newSquare.setAttribute("style", "background-color: black;");
-    });
-    newSquare.addEventListener("mouseleave", () => {
-      newSquare.removeAttribute("style");
-    });
-
+    newSquare.classList.add("c-square");
     compGameBoard.appendChild(newSquare);
   }
 })();

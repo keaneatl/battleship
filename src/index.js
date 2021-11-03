@@ -4,5 +4,4 @@ import { shipFactory } from "./factories/ship";
 import { playerFactory } from "./factories/player";
 import { gameBoardFactory } from "./factories/gameboard";
 import { newPlayerDOM, newComputerDOM } from "./game_helpers/gameboardDOM";
-
-const startGame = (() => {})();
+import { startGame } from "./game_helpers/initiator";

@@ -1,10 +1,4 @@
 /* fonts */
-body {
-  background-color: #f4f1f8;
-  font-size: 16px;
-  font-family: Helvetica, Arial, sans-serif;
-  height: 100vh;
-}
 
 .footer {
   margin-top: 5rem;
@@ -13,10 +7,16 @@ body {
 
 /* main styles */
 
+body {
+  background-color: #f4f1f8;
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  height: 100vh;
+}
 /* mobile styles */
 
 .header {
-  margin: 1.5rem;
+  margin: 2.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -49,7 +49,12 @@ body {
 }
 
 .tile {
+  cursor: pointer;
   border: 1px solid black;
+}
+
+.tile:hover {
+  background-color: black;
 }
 
 .footer {

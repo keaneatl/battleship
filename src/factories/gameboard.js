@@ -1,8 +1,7 @@
 import { shipFactory } from "./ship";
 
-const gameBoardFactory = () => {
-  const ships = [];
-  const board = [
+const gameBoardFactory = (
+  board = [
     { square: "1A" },
     { square: "1B" },
     { square: "1C" },
@@ -13,7 +12,9 @@ const gameBoardFactory = () => {
     { square: "1H" },
     { square: "1I" },
     { square: "1J" },
-  ];
+  ]
+) => {
+  const ships = [];
 
   const placeShip = (type, length, hb = [], coor) => {
     const createShip = shipFactory(type, length, hb);
