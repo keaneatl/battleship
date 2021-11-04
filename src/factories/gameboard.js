@@ -25,7 +25,7 @@ const gameBoardFactory = (
   };
 
   const receiveAttack = (coor) => {
-    const square = board[coor - 1];
+    const square = board[coor];
     if (square.ship !== undefined) {
       for (let x = 0; x < square.ship.lngth; x++) {
         square.ship.hit(coor);
@@ -33,9 +33,11 @@ const gameBoardFactory = (
       ships.forEach((ship) => {
         if (ship.name === square.ship.name) ship.hit(coor);
       });
+      console.log("Hit!");
       return "Hit!";
     }
     square.attacked = "Missed!";
+    console.log("Missed!");
     return "Missed!";
   };
 

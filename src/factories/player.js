@@ -5,12 +5,12 @@ const playerFactory = (type, myTurn = false) => {
   const attacks = [];
 
   const compAttack = (target) => {
-    let coor = Math.floor(Math.random() * 9);
+    let coor = Math.floor(Math.random() * 101);
     while (attacks.some((attempts) => attempts === coor)) {
-      coor = Math.floor(Math.random() * 9); //set to 100 after test
+      coor = Math.floor(Math.random() * 101); //set to 100 after test
     }
 
-    target.board.receiveAttack(coor);
+    target.receiveAttack(coor);
     attacks.push(coor);
     return coor;
   };

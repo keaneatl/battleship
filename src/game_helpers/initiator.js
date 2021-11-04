@@ -5,7 +5,7 @@ import { gameBoardFactory } from "../factories/gameboard";
 const startGame = (() => {
   const player = playerFactory("player");
   const computer = playerFactory("comp");
-  playerFactory().myTurn = true;
+  player.myTurn = true;
 
   let playerTiles = Array.from(document.querySelectorAll(".p-square"));
   let compTiles = Array.from(document.querySelectorAll(".c-square"));
@@ -31,6 +31,8 @@ const startGame = (() => {
   const compPatrol = compBoard.placeShip("patrolboat", 2, [1, 2], 77);
 
   drawDefaultShips();
+
+  return { player, computer, playerBoard, compBoard };
 })();
 
 export { startGame };
