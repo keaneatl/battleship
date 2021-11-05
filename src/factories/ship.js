@@ -1,11 +1,12 @@
 const shipFactory = (name, lngth, hitBox = []) => {
+  // continue here
   const isSunk = () => {
     if (hitBox.every((position) => position === "hit")) {
       return true;
-    } else return false;
+    }
   };
   const hit = (position) => {
-    hitBox.splice(position - 1, 1, "hit");
+    hitBox.splice(position, 1, "hit");
   };
 
   return { name, lngth, hitBox, hit, isSunk };

@@ -20,15 +20,15 @@ describe("gameboard methods", () => {
     expect(gbOne.receiveAttack(1)).toBe("Hit!");
     expect(gbOne.receiveAttack(4)).toBe("Hit!");
     expect(gbOne.receiveAttack(6)).toBe("Missed!");
-    expect(gbOne.board[5].attacked).toBe("Missed!");
+    expect(gbOne.board[6].attacked).toBe("Missed!");
   });
 
   test("can determine if all ships have sunk", () => {
+    gbOne.receiveAttack(0);
     gbOne.receiveAttack(1);
     gbOne.receiveAttack(2);
     gbOne.receiveAttack(3);
     gbOne.receiveAttack(4);
-    gbOne.receiveAttack(5);
     expect(gbOne.isDefeated()).toBe(true);
   });
 });

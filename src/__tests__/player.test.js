@@ -18,9 +18,4 @@ describe("player methods", () => {
 
     expect(computer.myTurn).toBe(true);
   });
-
-  test("computer plays randomly properly", () => {
-    const attack = computer.compAttack(playerOne);
-    expect(computer.compAttack(playerOne)).not.toBe(attack);
-  });
 });
