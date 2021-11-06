@@ -1,4 +1,7 @@
 /* fonts */
+.textbox {
+  font-size: 1.3rem;
+}
 
 .footer {
   margin-top: 5rem;
@@ -70,5 +73,30 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+  }
+  .textbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 55%;
+    height: 40px;
+    border-radius: 5px;
+    padding-left: 12px;
+  }
+}
+
+/* large tablet styles */
+@media (min-width: 950px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+/* desktop styles */
+/* large tablet styles */
+@media (min-width: 1250px) {
+  body {
+    font-size: 24px;
   }
 }

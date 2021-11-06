@@ -33,11 +33,9 @@ const gameBoardFactory = (
           ship.hit(square.shipPart);
         }
       });
-      console.log("Hit!");
       return "Hit!";
     }
     square.attacked = "Missed!";
-    console.log("Missed!");
     return "Missed!";
   };
 
