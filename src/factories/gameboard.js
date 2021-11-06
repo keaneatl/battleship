@@ -20,6 +20,7 @@ const gameBoardFactory = (
     const createShip = shipFactory(type, length, hb);
     for (let x = 0; x < length; x++) {
       board[coor + x].ship = createShip;
+      board[coor + x].shipPart = x;
     }
     ships.push(createShip);
   };
@@ -27,16 +28,9 @@ const gameBoardFactory = (
   const receiveAttack = (coor) => {
     const square = board[coor];
     if (square.ship !== undefined) {
-      // The problem is that it passes the coordinate of the tile, and not
-      // the coordinate of the part of that ship within the ship
       ships.forEach((ship) => {
-        let shipLoc;
         if (ship.name === square.ship.name) {
-          const shipLoc = board.find((tile, i) => {
-            tile.ship.name === ship.name;
-            return i;
-          });
-          ship.hit(coor - shipLoc);
+          ship.hit(square.shipPart);
         }
       });
       console.log("Hit!");
@@ -48,8 +42,8 @@ const gameBoardFactory = (
   };
 
   const isDefeated = () => {
-    console.log(ships);
-    return ships.every((ship) => ship.isSunk() === true);
+    const checkShips = ships.every((ship) => ship.isSunk() === true);
+    return checkShips;
     // return ships.every((ship) => ship.isSunk() === true);
   };
   return { board, placeShip, receiveAttack, ships, isDefeated };

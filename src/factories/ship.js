@@ -6,7 +6,7 @@ const shipFactory = (name, lngth, hitBox = []) => {
     }
   };
   const hit = (position) => {
-    hitBox.splice(position, 1, "hit");
+    hitBox.splice(position - 1, 1, "hit");
   };
 
   return { name, lngth, hitBox, hit, isSunk };

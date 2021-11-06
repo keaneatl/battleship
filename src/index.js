@@ -9,12 +9,11 @@ import { startGame } from "./game_helpers/initiator";
 const gameTracker = (() => {
   startGame.compTiles.forEach((tile) => {
     tile.addEventListener("click", () => {
-      console.log(startGame.computer.board.isDefeated());
-      //   if (startGame.playerBoard.isDefeated() === "defeat!") {
-      //     alert("You Lost!");
-      //   } else if (startGame.compBoard.isDefeated() === "defeat!") {
-      //     alert("You Win!");
-      //   }
+      if (startGame.player.board.isDefeated()) {
+        alert("You Lost!");
+      } else if (startGame.computer.board.isDefeated()) {
+        alert("You Win!");
+      }
     });
   });
 })();
