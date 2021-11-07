@@ -2,6 +2,7 @@ import { drawShips } from "./shipsDOM";
 import { playerFactory } from "../factories/player";
 import { attackComputer, attackPlayer } from "./shipsDOM";
 
+// WORK IN PROGRESS - Random Coordinates for Computer
 // const newRandCoor = (shipLength) => {
 //   // generate random coordinate for bot
 //   const compTiles = Array.from(document.querySelectorAll(".c-square"));
