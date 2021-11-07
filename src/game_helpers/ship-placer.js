@@ -39,7 +39,7 @@ const deployShips = (() => {
         activateStartBtn();
         playerBoard.removeEventListener("click", handler);
       } else {
-        textbox.textContent = "Please try again.";
+        textbox.forEach((el) => (el.textContent = "Please try again."));
       }
     });
   };
@@ -54,7 +54,7 @@ const deployShips = (() => {
         placePatrol();
         playerBoard.removeEventListener("click", handler);
       } else {
-        textbox.textContent = "Please try again.";
+        textbox.forEach((el) => (el.textContent = "Please try again."));
       }
     });
   };
@@ -69,7 +69,7 @@ const deployShips = (() => {
         placeSubmarine();
         playerBoard.removeEventListener("click", handler);
       } else {
-        textbox.textContent = "Please try again.";
+        textbox.forEach((el) => (el.textContent = "Please try again."));
       }
     });
   };
@@ -84,7 +84,7 @@ const deployShips = (() => {
         placeDestroyer();
         playerBoard.removeEventListener("click", handler);
       } else {
-        textbox.textContent = "Please try again.";
+        textbox.forEach((el) => (el.textContent = "Please try again."));
       }
     });
   };
@@ -98,7 +98,7 @@ const deployShips = (() => {
       placeBattleship();
       playerBoard.removeEventListener("click", handler);
     } else {
-      textbox.textContent = "Please try again.";
+      textbox.forEach((el) => (el.textContent = "Please try again."));
     }
   });
 })();

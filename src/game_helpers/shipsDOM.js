@@ -34,8 +34,6 @@ const attackPlayer = (i) => {
 
 const drawShips = () => {
   const playerTiles = Array.from(document.querySelectorAll(".p-square"));
-  const compTiles = Array.from(document.querySelectorAll(".c-square"));
-
   playerTiles.forEach((tile) => {
     if (!tile.ship) return;
     tile.setAttribute(
