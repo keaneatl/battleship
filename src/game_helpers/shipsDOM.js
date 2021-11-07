@@ -1,11 +1,11 @@
-import { startGame } from "./initiator";
+import { initGame } from "./initiator";
 
 const attackComputer = (tile, i) => {
-  if (startGame.player.myTurn);
-  const pAttack = startGame.player.attackOpp(startGame.computer, i);
-  const textbox = document.querySelector(".textbox");
-  textbox.textContent = pAttack;
-  startGame.player.myTurn = false;
+  if (initGame.player.myTurn);
+  const pAttack = initGame.player.attackOpp(initGame.computer, i);
+  const textbox = Array.from(document.querySelectorAll(".textbox"));
+  textbox.forEach((box) => (box.textContent = pAttack));
+  initGame.player.myTurn = false;
   if (pAttack === "Hit!") {
     tile.setAttribute(
       "style",
@@ -19,7 +19,7 @@ const attackComputer = (tile, i) => {
 
 const attackPlayer = (i) => {
   const playerTiles = Array.from(document.querySelectorAll(".p-square"));
-  const cAttack = startGame.computer.compAttack(startGame.player, i);
+  const cAttack = initGame.computer.compAttack(initGame.player, i);
   if (playerTiles[cAttack].ship) {
     playerTiles[cAttack].setAttribute(
       "style",
@@ -28,7 +28,7 @@ const attackPlayer = (i) => {
   } else {
     playerTiles[cAttack].setAttribute("style", "background-color: black;");
   }
-  startGame.player.myTurn = true;
+  initGame.player.myTurn = true;
   return cAttack;
 };
 
@@ -42,11 +42,6 @@ const drawShips = () => {
       "style",
       "border: 1px solid #0278f7; background-color: #b6d7f9"
     );
-  });
-
-  compTiles.forEach((tile, i) => {
-    tile.addEventListener("click", () => attackComputer(tile, i));
-    tile.addEventListener("click", () => attackPlayer(i));
   });
 };
 

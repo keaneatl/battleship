@@ -4,7 +4,6 @@
 }
 
 .footer {
-  margin-top: 5rem;
   font-size: 1.5rem;
 }
 
@@ -14,19 +13,35 @@ body {
   background-color: #f4f1f8;
   font-size: 16px;
   font-family: Helvetica, Arial, sans-serif;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 /* mobile styles */
 
 .header {
-  margin: 2.5rem;
+  padding: 1rem 2.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
 .textbox {
+  border: 1px solid black;
+}
+
+.big {
   display: none;
+}
+
+.small {
+  display: flex;
+  margin: 0.2rem auto;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 55%;
+  height: 40px;
+  border-radius: 5px;
 }
 
 .gh-ico {
@@ -60,8 +75,28 @@ body {
   background-color: black;
 }
 
+.start {
+  cursor: pointer;
+  display: none;
+  justify-self: center;
+  justify-content: center;
+  margin: 0 auto;
+  background-color: black;
+  color: white;
+  border: 0;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+}
+
 .footer {
+  margin-top: 2rem;
   text-align: center;
+  padding: 0 1rem;
+}
+
+.p-square.dragging {
+  opacity: 0.5;
+  background-color: pink;
 }
 
 /* small tablet styles */
@@ -74,7 +109,7 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
   }
-  .textbox {
+  .big {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,6 +118,14 @@ body {
     height: 40px;
     border-radius: 5px;
     padding-left: 12px;
+  }
+
+  .small {
+    display: none;
+  }
+
+  .start {
+    width: 10rem;
   }
 }
 

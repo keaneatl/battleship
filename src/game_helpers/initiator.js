@@ -1,6 +1,6 @@
 import { drawShips } from "./shipsDOM";
 import { playerFactory } from "../factories/player";
-import { gameBoardFactory } from "../factories/gameboard";
+import { attackComputer, attackPlayer } from "./shipsDOM";
 
 // const newRandCoor = (shipLength) => {
 //   // generate random coordinate for bot
@@ -25,27 +25,11 @@ import { gameBoardFactory } from "../factories/gameboard";
 //   }
 //   return randInt;
 // };
-const startGame = (() => {
+const initGame = ((i) => {
   const playerTiles = Array.from(document.querySelectorAll(".p-square"));
   const compTiles = Array.from(document.querySelectorAll(".c-square"));
   const player = playerFactory("player", true, playerTiles);
   const computer = playerFactory("comp", false, compTiles);
-
-  const playerCarrier = player.board.placeShip(
-    "carrier",
-    5,
-    [1, 2, 3, 4, 5],
-    0
-  );
-  const playerBattleship = player.board.placeShip(
-    "battleship",
-    4,
-    [1, 2, 3, 4],
-    22
-  );
-  const playerDestroyer = player.board.placeShip("destroyer", 3, [1, 2, 3], 43);
-  const playerSubmarine = player.board.placeShip("submarine", 3, [1, 2, 3], 57);
-  const playerPatrol = player.board.placeShip("patrolboat", 2, [1, 2], 77);
 
   const compCarrier = computer.board.placeShip(
     "carrier",
@@ -68,4 +52,31 @@ const startGame = (() => {
   return { player, computer, playerTiles, compTiles };
 })();
 
-export { startGame };
+const start = () => {
+  const cBoardDOM = document.querySelector(".computer-board");
+  const pBoardDOM = document.querySelector(".player-board");
+  const textbox = document.querySelector(".textbox");
+  const startBtn = document.querySelector(".start");
+
+  cBoardDOM.removeAttribute("style");
+  startBtn.textContent = "Restart Game";
+  startBtn.addEventListener("click", () => window.location.reload());
+  initGame.compTiles.forEach((tile, i) => {
+    tile.addEventListener("click", () => attackComputer(tile, i));
+    tile.addEventListener("click", () => attackPlayer(i));
+
+    tile.addEventListener("click", () => {
+      if (initGame.player.board.isDefeated()) {
+        pBoardDOM.setAttribute("style", "pointer-events: none; opacity: 0.4;");
+        cBoardDOM.setAttribute("style", "pointer-events: none; opacity: 0.4;");
+        textbox.textContent = "You Lose!";
+      } else if (initGame.computer.board.isDefeated()) {
+        pBoardDOM.setAttribute("style", "pointer-events: none; opacity: 0.4;");
+        cBoardDOM.setAttribute("style", "pointer-events: none; opacity: 0.4;");
+        textbox.textContent = "You Win!";
+      }
+    });
+  });
+};
+
+export { initGame, start };
