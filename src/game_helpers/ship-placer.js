@@ -12,12 +12,12 @@ const deployShips = (() => {
       checkArea = false;
     }
     for (let x = 0; x < shipLength; x++) {
-      if (
-        playerTiles[index + x].ship ||
-        // playerTiles[index - 1].hasAttribute("style") ||
-        (index + x) % 10 === 0
-      ) {
+      if (playerTiles[index + x].ship || (index + x) % 10 === 0) {
         checkArea = false;
+      } else if (playerTiles[index - 1]) {
+        if (playerTiles[index - 1].ship) {
+          checkArea = false;
+        }
       }
     }
 

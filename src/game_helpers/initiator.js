@@ -63,10 +63,11 @@ const start = () => {
   startBtn.textContent = "Restart Game";
   startBtn.addEventListener("click", () => window.location.reload());
   initGame.compTiles.forEach((tile, i) => {
-    tile.addEventListener("click", () => attackComputer(tile, i), {
-      once: true,
+    tile.addEventListener("click", function handler() {
+      attackComputer(tile, i);
+      tile.removeEventListener("click", handler);
     });
-    tile.addEventListener("click", () => attackPlayer(i));
+    tile.addEventListener("click", () => attackPlayer(i), { once: true });
 
     tile.addEventListener("click", () => {
       if (initGame.player.board.isDefeated()) {
